@@ -1,0 +1,519 @@
+<!-- Sticky Haeder tables -->
+<tr>
+    <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Name</th>
+    <th scope="col" class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">Title</th>
+    <th scope="col" class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">Email</th>
+    <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">Role</th>
+    <th scope="col" class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+        <span class="sr-only">Edit</span>
+    </th>
+</tr>
+<!-- Blog -->
+<!-- Vue -->
+<template>
+  <div class="relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
+    <div class="absolute inset-0">
+      <div class="h-1/3 bg-white sm:h-2/3" />
+    </div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p>
+      </div>
+      <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+        <div v-for="post in posts" :key="post.title" class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex-shrink-0">
+            <img class="h-48 w-full object-cover" :src="post.imageUrl" alt="" />
+          </div>
+          <div class="flex flex-1 flex-col justify-between bg-white p-6">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <a :href="post.category.href" class="hover:underline">{{ post.category.name }}</a>
+              </p>
+              <a :href="post.href" class="mt-2 block">
+                <p class="text-xl font-semibold text-gray-900">{{ post.title }}</p>
+                <p class="mt-3 text-base text-gray-500">{{ post.description }}</p>
+              </a>
+            </div>
+            <div class="mt-6 flex items-center">
+              <div class="flex-shrink-0">
+                <a :href="post.author.href">
+                  <span class="sr-only">{{ post.author.name }}</span>
+                  <img class="h-10 w-10 rounded-full" :src="post.author.imageUrl" alt="" />
+                </a>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900">
+                  <a :href="post.author.href" class="hover:underline">{{ post.author.name }}</a>
+                </p>
+                <div class="flex space-x-1 text-sm text-gray-500">
+                  <time :datetime="post.datetime">{{ post.date }}</time>
+                  <span aria-hidden="true">&middot;</span>
+                  <span>{{ post.readingTime }} read</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup>
+const posts = [
+  {
+    title: 'Boost your conversion rate',
+    href: '#',
+    category: { name: 'Article', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+    date: 'Mar 16, 2020',
+    datetime: '2020-03-16',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '6 min',
+    author: {
+      name: 'Roel Aufderehar',
+      href: '#',
+      imageUrl:
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+  },
+  {
+    title: 'How to use search engine optimization to drive sales',
+    href: '#',
+    category: { name: 'Video', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
+    date: 'Mar 10, 2020',
+    datetime: '2020-03-10',
+    imageUrl:
+      'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '4 min',
+    author: {
+      name: 'Brenna Goyette',
+      href: '#',
+      imageUrl:
+        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+  },
+  {
+    title: 'Improve your customer experience',
+    href: '#',
+    category: { name: 'Case Study', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+    date: 'Feb 12, 2020',
+    datetime: '2020-02-12',
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '11 min',
+    author: {
+      name: 'Daniela Metz',
+      href: '#',
+      imageUrl:
+        'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+  },
+]
+</script>
+<!-- HTML -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
+  <div class="absolute inset-0">
+    <div class="h-1/3 bg-white sm:h-2/3"></div>
+  </div>
+  <div class="relative mx-auto max-w-7xl">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.</p>
+    </div>
+    <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+      <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+        <div class="flex-shrink-0">
+          <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+        </div>
+        <div class="flex flex-1 flex-col justify-between bg-white p-6">
+          <div class="flex-1">
+            <p class="text-sm font-medium text-indigo-600">
+              <a href="#" class="hover:underline">Article</a>
+            </p>
+            <a href="#" class="mt-2 block">
+              <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
+              <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
+            </a>
+          </div>
+          <div class="mt-6 flex items-center">
+            <div class="flex-shrink-0">
+              <a href="#">
+                <span class="sr-only">Roel Aufderehar</span>
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </a>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900">
+                <a href="#" class="hover:underline">Roel Aufderehar</a>
+              </p>
+              <div class="flex space-x-1 text-sm text-gray-500">
+                <time datetime="2020-03-16">Mar 16, 2020</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>6 min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+        <div class="flex-shrink-0">
+          <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+        </div>
+        <div class="flex flex-1 flex-col justify-between bg-white p-6">
+          <div class="flex-1">
+            <p class="text-sm font-medium text-indigo-600">
+              <a href="#" class="hover:underline">Video</a>
+            </p>
+            <a href="#" class="mt-2 block">
+              <p class="text-xl font-semibold text-gray-900">How to use search engine optimization to drive sales</p>
+              <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.</p>
+            </a>
+          </div>
+          <div class="mt-6 flex items-center">
+            <div class="flex-shrink-0">
+              <a href="#">
+                <span class="sr-only">Brenna Goyette</span>
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </a>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900">
+                <a href="#" class="hover:underline">Brenna Goyette</a>
+              </p>
+              <div class="flex space-x-1 text-sm text-gray-500">
+                <time datetime="2020-03-10">Mar 10, 2020</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>4 min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+        <div class="flex-shrink-0">
+          <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+        </div>
+        <div class="flex flex-1 flex-col justify-between bg-white p-6">
+          <div class="flex-1">
+            <p class="text-sm font-medium text-indigo-600">
+              <a href="#" class="hover:underline">Case Study</a>
+            </p>
+            <a href="#" class="mt-2 block">
+              <p class="text-xl font-semibold text-gray-900">Improve your customer experience</p>
+              <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.</p>
+            </a>
+          </div>
+          <div class="mt-6 flex items-center">
+            <div class="flex-shrink-0">
+              <a href="#">
+                <span class="sr-only">Daniela Metz</span>
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </a>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900">
+                <a href="#" class="hover:underline">Daniela Metz</a>
+              </p>
+              <div class="flex space-x-1 text-sm text-gray-500">
+                <time datetime="2020-02-12">Feb 12, 2020</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>11 min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Select menu -->
+<div>
+  <label id="listbox-label" class="block text-sm font-medium text-gray-700">Assigned to</label>
+  <div class="relative mt-1">
+    <button type="button" class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+      <span class="flex items-center">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-shrink-0 rounded-full">
+        <span class="ml-3 block truncate">Tom Cook</span>
+      </span>
+      <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+        <!-- Heroicon name: mini/chevron-up-down -->
+        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </button>
+
+    <!--
+      Select popover, show/hide based on select state.
+
+      Entering: ""
+        From: ""
+        To: ""
+      Leaving: "transition ease-in duration-100"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    <ul class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+      <!--
+        Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
+
+        Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
+      -->
+      <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-shrink-0 rounded-full">
+          <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+          <span class="font-normal ml-3 block truncate">Wade Cooper</span>
+        </div>
+
+        <!--
+          Checkmark, only display for selected option.
+
+          Highlighted: "text-white", Not Highlighted: "text-indigo-600"
+        -->
+        <span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
+          <!-- Heroicon name: mini/check -->
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+          </svg>
+        </span>
+      </li>
+
+      <!-- More items... -->
+    </ul>
+</div>
+</div>
+<!--2-->
+<div>
+  <label for="combobox" class="block text-sm font-medium text-gray-700">Assigned to</label>
+  <div class="relative mt-1">
+    <input id="combobox" type="text" class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" role="combobox" aria-controls="options" aria-expanded="false">
+    <button type="button" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+      <!-- Heroicon name: mini/chevron-up-down -->
+      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <ul class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" id="options" role="listbox">
+      <!--
+        Combobox option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
+
+        Active: "text-white bg-indigo-600", Not Active: "text-gray-900"
+      -->
+      <li class="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900" id="option-0" role="option" tabindex="-1">
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-shrink-0 rounded-full">
+          <!-- Selected: "font-semibold" -->
+          <span class="ml-3 truncate">Leslie Alexander</span>
+        </div>
+
+        <!--
+          Checkmark, only display for selected option.
+
+          Active: "text-white", Not Active: "text-indigo-600"
+        -->
+        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
+          <!-- Heroicon name: mini/check -->
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+          </svg>
+        </span>
+      </li>
+
+      <!-- More items... -->
+    </ul>
+  </div>
+</div>
+
+
+<!-- 404 -->
+<div class="bg-white">
+  <main class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex-shrink-0 pt-16">
+      <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+    </div>
+    <div class="mx-auto max-w-xl py-16 sm:py-24">
+      <div class="text-center">
+        <p class="text-base font-semibold text-indigo-600">404</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">This page does not exist.</h1>
+        <p class="mt-2 text-lg text-gray-500">The page you are looking for could not be found.</p>
+      </div>
+      <div class="mt-12">
+        <h2 class="text-base font-semibold text-gray-500">Popular pages</h2>
+        <ul role="list" class="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
+          <li class="relative flex items-start space-x-4 py-6">
+            <div class="flex-shrink-0">
+              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                <!-- Heroicon name: outline/book-open -->
+                <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-base font-medium text-gray-900">
+                <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                  <a href="#" class="focus:outline-none">
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    Documentation
+                  </a>
+                </span>
+              </h3>
+              <p class="text-base text-gray-500">Learn how to integrate our tools with your app</p>
+            </div>
+            <div class="flex-shrink-0 self-center">
+              <!-- Heroicon name: mini/chevron-right -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </li>
+
+          <li class="relative flex items-start space-x-4 py-6">
+            <div class="flex-shrink-0">
+              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                <!-- Heroicon name: outline/bars-4 -->
+                <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                </svg>
+              </span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-base font-medium text-gray-900">
+                <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                  <a href="#" class="focus:outline-none">
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    API Reference
+                  </a>
+                </span>
+              </h3>
+              <p class="text-base text-gray-500">A complete API reference for our libraries</p>
+            </div>
+            <div class="flex-shrink-0 self-center">
+              <!-- Heroicon name: mini/chevron-right -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </li>
+
+          <li class="relative flex items-start space-x-4 py-6">
+            <div class="flex-shrink-0">
+              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                <!-- Heroicon name: outline/bookmark-square -->
+                <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
+                </svg>
+              </span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-base font-medium text-gray-900">
+                <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                  <a href="#" class="focus:outline-none">
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    Guides
+                  </a>
+                </span>
+              </h3>
+              <p class="text-base text-gray-500">Installation guides that cover popular setups</p>
+            </div>
+            <div class="flex-shrink-0 self-center">
+              <!-- Heroicon name: mini/chevron-right -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </li>
+
+          <li class="relative flex items-start space-x-4 py-6">
+            <div class="flex-shrink-0">
+              <span class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+                <!-- Heroicon name: outline/rss -->
+                <svg class="h-6 w-6 text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg>
+              </span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-base font-medium text-gray-900">
+                <span class="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                  <a href="#" class="focus:outline-none">
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    Blog
+                  </a>
+                </span>
+              </h3>
+              <p class="text-base text-gray-500">Read our latest news and articles</p>
+            </div>
+            <div class="flex-shrink-0 self-center">
+              <!-- Heroicon name: mini/chevron-right -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </li>
+        </ul>
+        <div class="mt-8">
+          <a href="#" class="text-base font-medium text-indigo-600 hover:text-indigo-500">
+            Or go back home
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="border-t border-gray-200 py-12 text-center md:flex md:justify-between">
+      <p class="text-base text-gray-400">&copy; Your Company, Inc. All rights reserved.</p>
+      <div class="mt-6 flex justify-center space-x-8 md:mt-0">
+        <a href="#" class="inline-flex text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Facebook</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <a href="#" class="inline-flex text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Instagram</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <a href="#" class="inline-flex text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Twitter</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+        </a>
+
+        <a href="#" class="inline-flex text-gray-400 hover:text-gray-500">
+          <span class="sr-only">GitHub</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <a href="#" class="inline-flex text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Dribbble</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>

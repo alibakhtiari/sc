@@ -1,0 +1,81 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+/*@import 'additional-styles/range-slider.css';*/
+@import 'additional-styles/toggle-switch.css';
+@import 'additional-styles/theme.css';
+@import 'tailwindcss/utilities';
+
+/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
+@layer utilities {
+    .rtl {
+        direction: rtl;
+    }
+    .ltr {
+      direction: ltr;
+  }
+}
+@font-face {
+	font-family: 'YekanB';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:url('fonts/YekanBakh.woff2') format('woff2'),
+		url('fonts/YekanBakh.woff') format('woff');
+}
+@font-face {
+	font-family: 'YekanB';
+	font-style: normal;
+	font-weight: bold;
+	font-display: swap;
+	src:url('fonts/YekanBakh-Bold.woff2') format('woff2'),
+		url('fonts/YekanBakh-Bold.woff') format('woff');
+}
+
+body , h1, h2, h3, h4, h5, h6,input, textarea {font-family: 'YekanB'  !important;}
+/* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
+[x-cloak=""] {
+    display: none;
+}
+.logo g.txt {fill:#034694}
+/*.dark .logo g.txt, .dark .logo path {fill:#f1b70e}*/
+.dark .logo g.txt, .dark .logo path {fill:#f7f7f7}
+.coinPriceBlock__changes--up {
+    background-color: #16c784;
+}
+.coinPriceBlock__changes--down {
+    background-color: #ea3943;
+}
+select{
+  background-position-x: left;
+}
+.glide__slide .crypto_card, .card{
+  border:2px solid #000;
+  box-shadow: 0.5rem 0.5rem 0 #000;
+  transition: all 0.3s;
+}
+.glide__slide:hover .crypto_card{
+  transform: translateY(-8px);
+}
+.sun,.moon{
+  transition: all 300s;
+}
+.sun , .footer_logo_d {
+  display: block;
+}
+.moon , .dark .footer_logo_d {
+  display: none
+}
+.dark .sun , .footer_logo_w  {
+  display: none
+}
+.dark .moon , .dark .footer_logo_w {
+  display: block;
+}
+
+:not(input) {
+    -webkit-user-select: none;
+    user-select: none;
+}
