@@ -74,7 +74,7 @@ select{
 .dark .moon , .dark .footer_logo_w {
   display: block;
 }
-
+@keyframes fly{0%,to{transform:translateY(5%)}50%{transform:translateY(0)}}.animate-fly{animation:fly 6s cubic-bezier(.75,.02,.31,.87) infinite}
 :not(input) {
     -webkit-user-select: none;
     user-select: none;
