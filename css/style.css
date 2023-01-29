@@ -3,8 +3,6 @@
 
 /* Additional styles */
 @import 'additional-styles/utility-patterns.css';
-/*@import 'additional-styles/range-slider.css';*/
-@import 'additional-styles/toggle-switch.css';
 @import 'additional-styles/theme.css';
 @import 'tailwindcss/utilities';
 
@@ -47,9 +45,13 @@ body , h1, h2, h3, h4, h5, h6,input, textarea {font-family: 'YekanB'  !important
 [x-cloak=""] {
     display: none;
 }
-.logo g.txt {fill:#034694}
-/*.dark .logo g.txt, .dark .logo path {fill:#f1b70e}*/
-.dark .logo g.txt, .dark .logo path {fill:#f7f7f7}
+.logo .st2,.logo .st3 {
+  transition: all 300ms ease-in-out;
+}
+.logo .st2{color:#061962}
+.logo .st3{color:#f1b70e}
+.dark .logo .vector .st2 {fill:#f7f7f7}
+.dark .logo .type .st2 {fill:#f7f7f7}
 .coinPriceBlock__changes--up {
     background-color: #16c784;
 }

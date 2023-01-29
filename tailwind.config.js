@@ -89,21 +89,6 @@ module.exports = {
         '1/2': '50%',
         full: '100%',
       },
-      minWidth: {
-        10: '2.5rem',
-      },
-      scale: {
-        98: '.98',
-      },
-      animation: {
-        float: 'float 5s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10%)' },
-        },
-      },
       zIndex: {
         '-1': '-1',
         '-10': '-10',
