@@ -33,6 +33,14 @@
 	src:url('fonts/YekanBakh-Bold.woff2') format('woff2'),
 		url('fonts/YekanBakh-Bold.woff') format('woff');
 }
+@font-face {
+	font-family: 'YekanB';
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src:url('fonts/YekanBakh-Heavy.woff2') format('woff2'),
+		url('fonts/YekanBakh-Heavy.woff') format('woff');
+}
 
 body , h1, h2, h3, h4, h5, h6,input, textarea {font-family: 'YekanB'  !important;}
 /* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
