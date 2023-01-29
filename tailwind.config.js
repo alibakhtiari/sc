@@ -67,9 +67,6 @@ module.exports = {
         }
 
       },
-      outline: {
-        blue: '2px solid rgba(0, 112, 244, 0.5)',
-      },
       spacing: {
         128: '32rem',
         '9/16': '56.25%',
